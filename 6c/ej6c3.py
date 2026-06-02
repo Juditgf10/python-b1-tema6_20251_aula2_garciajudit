@@ -90,20 +90,26 @@ import pandas as pd
 
 def read_parquet_file(path: str) -> pd.DataFrame:
     #Write your code here
+    dataframe = pd.read_parquet(path)
+    return dataframe
     pass
 
 
 def calculate_amount_quanity(dataframe: pd.DataFrame):
     #Write your code here
+    dataframe["amount"] = dataframe["price"] * dataframe["units_sold"]
+    return dataframe
     pass
 
 
 # Si quieres probar tu código, descomenta las siguientes líneas y ejecuta el script
 # Si vols provar el teu codi, descomenta les línies següents i executa l'script
 
-# df_sales = read_parquet_file("files/sales_products_2020_08.parquet")
-# print(df_sales.columns)
+df_sales = read_parquet_file(
+    r"C:\Users\judit\OneDrive\Escritorio\CURSO_PROGRAMACION_PYTHON\Python_B1\Proyectos\python-b1-tema6_20251_aula2_garciajudit\6c\files\sales_products_2020_08.parquet"
+)
+print(df_sales.columns)
 #
-# df_sales = calculate_amount_quanity(df_sales)
-# print(df_sales.columns)
-# print(df_sales[["price", "units_sold", "amount"]].head())
+df_sales = calculate_amount_quanity(df_sales)
+print(df_sales.columns)
+print(df_sales[["price", "units_sold", "amount"]].head())
